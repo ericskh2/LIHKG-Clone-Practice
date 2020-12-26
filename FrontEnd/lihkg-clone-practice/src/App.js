@@ -5,12 +5,13 @@ import { Helmet } from 'react-helmet'
 import Container from 'react-bootstrap/Container'
 import TopicList from './Components/TopicList'
 import Background from './Components/Background'
+import Topic from './Components/Topics/Topic'
 
 
 
 
 function App() {
-	const category = "吹水台|LIHKG";
+	const category = "吹水台";
 	return (
 		<div>
 			<Container>
@@ -18,11 +19,11 @@ function App() {
 
 
 					<Helmet>
-						<title>{category}</title>
+						<title>{category}|LIHKG</title>
 					</Helmet>
 
-					<TopicList />
-					<Background />
+					<TopicList category={category}/>
+					<Topic />
 				</div>
 			</Container>
 		</div>
