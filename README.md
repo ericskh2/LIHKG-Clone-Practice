@@ -7,4 +7,4 @@
 ### Backend: Spring boot (Java)
 
 ## Difficulties faced:
-### Day 1: Weakness on Art design, so learn from website and use bootstrap and fontawesome for help
+### Day 1: Weakness in Art design, so learn from website and use bootstrap and fontawesome for help
