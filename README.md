@@ -4,4 +4,4 @@
 
 ## Technologies used: 
 ### Frontend: React.js, React-Router-Dom, Bootstrap,  Fontawesome
-### Backend: Spring boot
+### Backend: Spring boot, MongoDB
