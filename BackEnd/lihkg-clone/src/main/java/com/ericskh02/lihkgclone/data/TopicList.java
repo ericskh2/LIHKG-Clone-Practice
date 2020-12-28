@@ -12,6 +12,7 @@ public class TopicList {
     public TopicList(){
         this.topicList = new ArrayList<>();
     }
+
     public TopicList(List<Topic> topicList){
         this.topicList = new ArrayList<>(topicList);
     }

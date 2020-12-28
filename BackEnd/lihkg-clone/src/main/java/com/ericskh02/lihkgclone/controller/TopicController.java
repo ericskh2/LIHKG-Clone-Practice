@@ -26,11 +26,6 @@ public class TopicController {
         return ResponseEntity.ok().body(topic);
     }
 
-    @PostMapping("/reply/create")
-    public ResponseEntity<Reply> createReply(@RequestBody Reply reply){
-        return (replyService.createReply(reply))? ResponseEntity.ok().body(reply) : ResponseEntity.notFound().build();
-    }
-
     @PutMapping("topic/update")
     public ResponseEntity<Topic> updateTopic(@RequestBody UpdateTopic updateTopic){
         if(topicService.updateTopic(updateTopic)){
@@ -39,14 +34,5 @@ public class TopicController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    /*
-    @PostMapping("/create/{author}")
-    public ResponseEntity createTopic(@PathVariable("author") String author, @RequestBody String content){
-        Reply reply = new Reply(author,content);
-        replyService.createReply(reply);
-        return ResponseEntity.ok().build();
-    }
-    */
 
 }
