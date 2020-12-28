@@ -1,13 +1,13 @@
 package com.ericskh02.lihkgclone.data;
 
-import com.ericskh02.lihkgclone.LihkgCloneApplication;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-import java.util.concurrent.atomic.AtomicInteger;
 
-@Document(collation = "reply")
+
+@Document(collection = "reply")
 public class Reply {
+
 
     private final int id;
 
@@ -45,7 +45,7 @@ public class Reply {
     }
 
     public Reply(String author, String content) {
-        this.id = LihkgCloneApplication.getLastId();
+        this.id = 0;
         this.author = author;
         this.content = content;
         this.floor = 0;
