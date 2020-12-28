@@ -20,6 +20,9 @@ public class TopicListService {
     }
 
     public int getLastTopicId(){
+        if(topicRepository.count()==0){
+            return 0;
+        }
         Sort sort = Sort.by(Sort.Order.desc("id"));
         return ((Topic)topicRepository.findAll(sort).toArray()[0]).getId();
     }

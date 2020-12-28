@@ -12,16 +12,21 @@ public class ReplyService {
     @Autowired
     private ReplyRepository replyRepository;
 
-    public Reply getReply(String id){
+    @Autowired
+    private TopicService topicService;
+
+    public Reply getReply(int id){
         return replyRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Can't find post"));
     }
 
-    public Reply createReply(Reply reply){
-        return replyRepository.insert(reply);
+    public boolean createReply(Reply reply){
+        if(!topicService.hasTopic(reply.getTopicId())) return false;
+        replyRepository.insert(reply);
+        return true;
     }
 
-    public void deleteReply(String id){
+    public void deleteReply(int id){
         replyRepository.deleteById(id);
     }
 }

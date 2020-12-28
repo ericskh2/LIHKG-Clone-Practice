@@ -29,17 +29,11 @@ public class TopicListController {
         return ResponseEntity.ok().body(topicListService.getTopicList());
     }
 
-    @GetMapping("/last")
-    public ResponseEntity<Integer> getLastTopicIdTest(){
-        return ResponseEntity.ok().body(idDistributeService.getId());
-    }
     /*
     @GetMapping("/topics/{category}")
     public ResponseEntity<TopicList> getTopicList(@PathVariable("category") String category){
         return null;
     }
     */
-
-
 
 }

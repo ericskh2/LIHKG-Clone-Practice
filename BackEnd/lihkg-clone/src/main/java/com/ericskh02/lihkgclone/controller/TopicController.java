@@ -2,14 +2,12 @@ package com.ericskh02.lihkgclone.controller;
 
 import com.ericskh02.lihkgclone.data.Reply;
 import com.ericskh02.lihkgclone.data.Topic;
+import com.ericskh02.lihkgclone.data.UpdateTopic;
 import com.ericskh02.lihkgclone.service.ReplyService;
 import com.ericskh02.lihkgclone.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,15 +20,24 @@ public class TopicController {
     @Autowired
     private TopicService topicService;
 
-    @GetMapping("/test")
-    public ResponseEntity test(){
-        return ResponseEntity.ok().build();
-    }
-
     @PostMapping("/topic/create")
     public ResponseEntity<Topic> createTopic(@RequestBody Topic topic){
         topicService.createTopic(topic);
         return ResponseEntity.ok().body(topic);
+    }
+
+    @PostMapping("/reply/create")
+    public ResponseEntity<Reply> createReply(@RequestBody Reply reply){
+        return (replyService.createReply(reply))? ResponseEntity.ok().body(reply) : ResponseEntity.notFound().build();
+    }
+
+    @PutMapping("topic/update")
+    public ResponseEntity<Topic> updateTopic(@RequestBody UpdateTopic updateTopic){
+        if(topicService.updateTopic(updateTopic)){
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     /*

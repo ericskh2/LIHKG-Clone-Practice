@@ -1,14 +1,8 @@
 package com.ericskh02.lihkgclone.data;
 
-import com.ericskh02.lihkgclone.service.IdDistributeService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import javax.annotation.PostConstruct;
 
 @Document(collection = "topic")
 public class Topic {
