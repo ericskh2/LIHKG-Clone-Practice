@@ -22,8 +22,10 @@ public class Reply {
     private int like;
     private int dislike;
 
+    private LocalDateTime replyTime;
+
     public Reply(){
-        replytime = LocalDateTime.now();
+        replyTime = LocalDateTime.now();
     }
 
     public Reply(int topicId, String author, String content) {
@@ -33,7 +35,7 @@ public class Reply {
         this.floor = 0;
         this.like = 0;
         this.dislike = 0;
-        this.replytime = LocalDateTime.now();
+        this.replyTime = LocalDateTime.now();
     }
 
     @PersistenceConstructor
@@ -46,7 +48,6 @@ public class Reply {
         this.like = like;
         this.dislike = dislike;
     }
-    private LocalDateTime replytime;
 
     public String getAuthor() {
         return author;
@@ -68,8 +69,8 @@ public class Reply {
         return dislike;
     }
 
-    public LocalDateTime getReplytime() {
-        return replytime;
+    public LocalDateTime getReplyTime() {
+        return replyTime;
     }
 
     public ObjectId getId() {
@@ -108,8 +109,8 @@ public class Reply {
         this.dislike = dislike;
     }
 
-    public void setReplytime(LocalDateTime replytime) {
-        this.replytime = replytime;
+    public void setReplyTime(LocalDateTime replyTime) {
+        this.replyTime = replyTime;
     }
 
 

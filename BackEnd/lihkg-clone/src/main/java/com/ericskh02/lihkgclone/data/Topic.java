@@ -1,8 +1,11 @@
 package com.ericskh02.lihkgclone.data;
 
+import org.apache.tomcat.jni.Local;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDateTime;
 
 @Document(collection = "topic")
 public class Topic {
@@ -17,9 +20,19 @@ public class Topic {
     private int like;
     private int dislike;
 
+    private LocalDateTime createTime;
 
     public Topic(){
+        this.createTime = LocalDateTime.now();
+    }
 
+    public Topic(String title, String author, String content){
+        this.title = title;
+        this.author = author;
+        this.content = content;
+        this.like = 0;
+        this.dislike = 0;
+        this.createTime = LocalDateTime.now();
     }
 
     @PersistenceConstructor
@@ -30,6 +43,7 @@ public class Topic {
         this.content = content;
         this.like = like;
         this.dislike = dislike;
+        this.createTime = LocalDateTime.now();
     }
 
     public int getId(){

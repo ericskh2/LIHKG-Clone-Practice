@@ -20,6 +20,10 @@ public class TopicController {
     @Autowired
     private TopicService topicService;
 
+    @GetMapping("/topic/{id}")
+    public ResponseEntity<Topic> getTopic(@PathVariable("id") String id){
+        return ResponseEntity.ok().body(topicService.getTopic(Integer.parseInt(id)));
+    }
     @PostMapping("/topic/create")
     public ResponseEntity<Topic> createTopic(@RequestBody Topic topic){
         topicService.createTopic(topic);

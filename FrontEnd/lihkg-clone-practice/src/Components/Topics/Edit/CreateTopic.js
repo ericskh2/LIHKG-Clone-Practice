@@ -17,7 +17,7 @@ function CreateTopic() {
                 </div>
                 <div className="formgroup text-center mt-5">
                     <textarea id="content" name="content" rows="20" cols="100" className="bg-light">
-                        At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+                        
                     </textarea>
                 </div>
                 <div className="formgroupmt-5">
