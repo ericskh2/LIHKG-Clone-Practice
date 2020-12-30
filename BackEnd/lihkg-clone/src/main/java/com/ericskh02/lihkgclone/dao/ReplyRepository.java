@@ -11,7 +11,9 @@ import java.util.List;
 @Repository
 public interface ReplyRepository extends MongoRepository<Reply, Integer> {
 
-    //@Query("SELECT * FROM reply WHERE topicId == $0 ORDER BY floor ASC")
     @Query(value="{ 'topicId':  ?0  }",sort="{'floor': 1}}")
     List<Reply> findByTopicIdLike(int topicId);
+
+    @Query(value="{ 'topicId':  ?0  }",sort="{'floor': -1}}")
+    List<Reply> findByTopicIdLikeDesc(int topicId);
 }

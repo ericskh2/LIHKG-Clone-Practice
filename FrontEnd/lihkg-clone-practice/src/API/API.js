@@ -16,5 +16,11 @@ export const APICreateTopic = data => Request.post('/topic/create',data,{
     }
 });
 
+export const APICreateReply = data => Request.post('/reply/create',data,{
+    headers: {
+        'Content-Type': 'application/json',
+    }
+})
+
 //Template with data input
 // export const APILogin = data => TopicListRequest.get('/login',data);

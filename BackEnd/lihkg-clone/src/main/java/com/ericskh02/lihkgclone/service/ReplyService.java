@@ -24,7 +24,7 @@ public class ReplyService {
 
     public boolean createReply(Reply reply){
         if(!topicService.hasTopic(reply.getTopicId())) return false;
-        reply.setFloor(replyListService.getNextReplyFloor());
+        reply.setFloor(replyListService.getNextReplyFloor(reply.getTopicId()));
         replyRepository.insert(reply);
         return true;
     }
