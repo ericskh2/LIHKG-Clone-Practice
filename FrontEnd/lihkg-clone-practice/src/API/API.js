@@ -8,5 +8,7 @@ export const APITopicList = () => TopicListRequest.get('/topics');
 
 export const APIGetTopic = data => TopicListRequest.get('/topic/'+data); 
 
+export const APIGetReply = data => TopicListRequest.get('/reply/'+data);
+
 //Template with data input
 // export const APILogin = data => TopicListRequest.get('/login',data);

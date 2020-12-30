@@ -1,13 +1,12 @@
 import { useContext } from "react";
 
-function ReplyTopBar(props) {
+function FirstFloorTopBar(props) {
     const data = props.data;
     console.log(data)
-    if(data.floor == undefined)data.floor = 0;
     return (
         <div>
             <span className="text-secondary m-1">
-                #{data.floor+2}
+                #1
             </span>
             <span className="text-primary m-1">
                 {data.author} 
@@ -25,4 +24,4 @@ function ReplyTopBar(props) {
     );
 }
 
-export default ReplyTopBar
+export default FirstFloorTopBar

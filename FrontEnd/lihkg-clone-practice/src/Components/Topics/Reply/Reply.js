@@ -5,16 +5,19 @@ import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import ReplyTopBar from './ReplyTopBar'
 import Wall from '../Wall'
 
+/*
 const data = {
-    "author": "吾城科工狗",
+    "author": "writer",
     "replytime": "2020/12/27",
     "floor": 1,
     "like": 10,
     "dislike": 2,
-    "content": "都大>Shitty#laugh",
+    "content": "Hello world!",
 };
+*/
 
-function Reply() {
+function Reply(data) {
+    data = data.data;
     return (
         <div className="m-5">
                 <div className="row">

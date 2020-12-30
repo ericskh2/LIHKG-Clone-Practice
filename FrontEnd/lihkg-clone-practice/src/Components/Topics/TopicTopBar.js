@@ -1,9 +1,9 @@
 import Wall from './Wall'
 
-function TopicTopBar(){
+function TopicTopBar(props){
     return (
         <div className="row">
-            <span className="ml-5 pt-2">法唔法國都大勁過Shitty</span>
+            <span className="ml-5 pt-2">{props.topic.title}</span>
             <Wall />
         </div>
     );   

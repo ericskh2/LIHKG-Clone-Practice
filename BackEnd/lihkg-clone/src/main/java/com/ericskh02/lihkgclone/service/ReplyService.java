@@ -15,6 +15,8 @@ public class ReplyService {
     @Autowired
     private TopicService topicService;
 
+    @Autowired
+    private ReplyListService replyListService;
     public Reply getReply(int id){
         return replyRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Can't find post"));
@@ -22,6 +24,7 @@ public class ReplyService {
 
     public boolean createReply(Reply reply){
         if(!topicService.hasTopic(reply.getTopicId())) return false;
+        reply.setFloor(replyListService.getNextReplyFloor());
         replyRepository.insert(reply);
         return true;
     }
