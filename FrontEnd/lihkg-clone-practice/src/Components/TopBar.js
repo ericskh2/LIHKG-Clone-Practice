@@ -9,7 +9,7 @@ function TopBar(props) {
 
     function RenderCreateTopic(){
         if(createTopic){
-            return <CreateTopic />
+            return <CreateTopic show={true}/>
         }
     }
 

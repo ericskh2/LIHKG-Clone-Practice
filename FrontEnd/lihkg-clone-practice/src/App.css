@@ -18,3 +18,12 @@
   overflow: auto;
   background: white;
 }
+
+a {
+  text-decoration: none;
+  color: black !important;
+}
+
+a:hover{
+  text-decoration: none !important;
+}

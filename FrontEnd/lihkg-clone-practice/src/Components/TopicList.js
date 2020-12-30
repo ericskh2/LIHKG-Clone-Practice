@@ -35,6 +35,7 @@ function TopicList(props) {
             return generated;
         }
     */
+
     async function getTopicsFromAPI(){
         var response = await APITopicList()
         .then(res=>
@@ -59,7 +60,6 @@ function TopicList(props) {
         setResponse(await genTopics());
     }, []); //This will run only once 
 
-    
     return (
         <div className="col-4 min-vh-100">
             <TopBar category={props.category} />
@@ -70,4 +70,4 @@ function TopicList(props) {
     );
 }
 
-export default TopicList
+export default TopicList;
