@@ -61,8 +61,8 @@ function TopicList(props) {
     }, []); //This will run only once 
 
     return (
-        <div className="col-4 min-vh-100">
-            <TopBar category={props.category} />
+        <div className="min-vh-100">
+            <TopBar category={props.category} setMenuOpen={props.setMenuOpen}/>
             <div className="mt-5">
                 {response}
             </div>

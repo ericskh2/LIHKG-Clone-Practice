@@ -59,11 +59,9 @@ function Topic(props) {
     }
 
     return (
-        <div className="col-8">
-            <div>
-                {TopicData}
-                {ReplyData}
-            </div>
+        <div>
+            {TopicData}
+            {ReplyData}
         </div>
     );
 }

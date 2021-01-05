@@ -15,8 +15,9 @@ public class Topic {
 
     private String title;
     private String author;
-
+    private String category;
     private String content;
+
     private int like;
     private int dislike;
 
@@ -26,9 +27,10 @@ public class Topic {
         this.createTime = LocalDateTime.now();
     }
 
-    public Topic(String title, String author, String content){
+    public Topic(String title, String author, String category, String content){
         this.title = title;
         this.author = author;
+        this.category = category;
         this.content = content;
         this.like = 0;
         this.dislike = 0;
@@ -94,4 +96,12 @@ public class Topic {
         this.dislike = dislike;
     }
 
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 }

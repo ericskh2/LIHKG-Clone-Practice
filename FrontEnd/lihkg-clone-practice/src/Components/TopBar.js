@@ -14,13 +14,13 @@ function TopBar(props) {
     }
 
     return (
-        <div className="position-absolute col-12">
+        <div className=" col-12">
 
             {RenderCreateTopic()}
 
             <div className="row border-bottom border-grey">
                 <div className="col-3">
-                    <button className="navbar-toggler">
+                    <button className="navbar-toggler" onClick={props.setMenuOpen}>
                         <span class="navbar-toggler-icon"><img src={favicon} alt="navbutton" className="img-fluid"></img></span>
                     </button>
                 </div>

@@ -13,6 +13,7 @@ function CreateTopic(props) {
         var object = {};
         data.forEach((value, key) => object[key] = value);
         object['author'] = '連尼住';
+        console.log(object);
         APICreateTopic(object);
         setShowCreateTopic(false);
     }
