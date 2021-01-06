@@ -7,37 +7,18 @@ import { APITopicList } from '../API/API'
 
 function TopicList(props) {
 
-    const [response,setResponse] = useState([]);
-    /*
-       const topics = [
-            {
-                "author": "作者",
-                "createTime": "10分鐘前",
-                "like": 10,
-                "dislike": 0,
-                "title": "第1個post"
-            },
-            {
-                "author": "連泥住",
-                "posttime": "5分鐘前",
-                "like": -10,
-                "dislike": 0,
-                "title": "第2個post"
-            }
-        ];
-        function genTopics() {
-            let generated = [];
-            topics.forEach(topic => {
-                console.log(topic);
-                generated.push(<TopicList_Topic topics={topic} />);
-            });
-            console.log(generated);
-            return generated;
-        }
-    */
+   const [response,setResponse] = useState([]);
+
+   var category;
+
+   if(typeof props.category === "undefined"){
+       category = "";
+   } else {
+       category = props.category;
+   }
 
     async function getTopicsFromAPI(){
-        var response = await APITopicList()
+        var response = await APITopicList(category)
         .then(res=>
             {return res;}
         )
@@ -68,6 +49,34 @@ function TopicList(props) {
             </div>
         </div>
     );
+
+        /*
+       const topics = [
+            {
+                "author": "作者",
+                "createTime": "10分鐘前",
+                "like": 10,
+                "dislike": 0,
+                "title": "第1個post"
+            },
+            {
+                "author": "連泥住",
+                "posttime": "5分鐘前",
+                "like": -10,
+                "dislike": 0,
+                "title": "第2個post"
+            }
+        ];
+        function genTopics() {
+            let generated = [];
+            topics.forEach(topic => {
+                console.log(topic);
+                generated.push(<TopicList_Topic topics={topic} />);
+            });
+            console.log(generated);
+            return generated;
+        }
+    */
 }
 
 export default TopicList;

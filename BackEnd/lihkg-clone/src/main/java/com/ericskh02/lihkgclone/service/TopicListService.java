@@ -19,6 +19,10 @@ public class TopicListService {
          return topicList;
     }
 
+    public TopicList getTopicList(String category){
+        TopicList topicList = new TopicList(topicRepository.findByCategoryIdLike(category));
+        return topicList;
+    }
     public int getLastTopicId(){
         if(topicRepository.count()==0){
             return 0;

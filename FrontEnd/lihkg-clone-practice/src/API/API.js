@@ -4,7 +4,7 @@ const Request = axios.create({
     baseURL: "http://localhost:8080/api"
 });
 
-export const APITopicList = () => Request.get('/topics');
+export const APITopicList = data => (data=="")?Request.get('/topics'):Request.get('/topics/'+data);
 
 export const APIGetTopic = data => Request.get('/topic/'+data); 
 
