@@ -1,20 +1,27 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 
 import { APICreateReply } from '../../../API/API'
+import {UserContext} from '../../Account/User/UserContext'
 
 function CreateReply(props) {
 
+    const {userData,setUserData} = useContext(UserContext);
     const [showCreateReply, setShowCreateReply] = useState(false);
 
     function handleSubmit(event) {
         event.preventDefault();
-        const data = new FormData(event.target);
-        var object = {};
-        data.forEach((value, key) => object[key] = value);
-        object['author'] = '連尼住';
-        object['topicId'] = props.topicId;
-        APICreateReply(object);
-        console.log(object)
+        if(userData.loggedIn){
+            const data = new FormData(event.target);
+            var object = {};
+            data.forEach((value, key) => object[key] = value);
+            object['author'] = userData.name;
+            object['topicId'] = props.topicId;
+            APICreateReply(object);
+            console.log(object)
+            
+        } else {
+            alert("未登入!")
+        }
         setShowCreateReply(false);
     }
 

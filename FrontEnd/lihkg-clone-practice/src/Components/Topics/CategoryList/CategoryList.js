@@ -2,6 +2,8 @@ import CategoryData from "./CategoryData";
 
 import Category from './Category'
 
+import LoginButton from '../../Account/Login/LoginButton'
+
 function CategoryList(props){
 
     function generateCategories(){
@@ -15,6 +17,9 @@ function CategoryList(props){
     if(props.show){
         return (
             <div className="position-absolute zindex-sticky bg-white min-vh-100 pt-5 ml-2 pl-5">
+                <div className="row">
+                    <LoginButton />
+                </div>
                 <div className="row">
                 {generateCategories()}
                 </div>

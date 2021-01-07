@@ -1,20 +1,29 @@
-import CreateTopicBar from './CreateTopicBar'
-
 import {APICreateTopic} from '../../../API/API'
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useContext } from 'react';
+
+import CreateTopicBar from './CreateTopicBar'
+import {UserContext} from '../../Account/User/UserContext'
 
 function CreateTopic(props) {
 
     const [showCreateTopic,setShowCreateTopic] = useState(false);
 
+    const {userData,setUserData} = useContext(UserContext);
+
     function handleSubmit(event) {
         event.preventDefault();
-        const data = new FormData(event.target);
-        var object = {};
-        data.forEach((value, key) => object[key] = value);
-        object['author'] = '連尼住';
-        console.log(object);
-        APICreateTopic(object);
+        if(userData.loggedIn){
+            
+            const data = new FormData(event.target);
+            var object = {};
+            data.forEach((value, key) => object[key] = value);
+            object['author'] = userData.name;
+            console.log(object);
+            APICreateTopic(object);
+
+        } else {
+            alert("未登入!")
+        }
         setShowCreateTopic(false);
     }
 
