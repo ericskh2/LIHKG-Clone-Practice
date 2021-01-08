@@ -104,4 +104,12 @@ public class Topic {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    public LocalDateTime getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
+    }
 }

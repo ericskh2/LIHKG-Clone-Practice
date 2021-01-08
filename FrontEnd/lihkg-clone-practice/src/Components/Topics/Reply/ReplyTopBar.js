@@ -2,7 +2,6 @@ import { useContext } from "react";
 
 function ReplyTopBar(props) {
     const data = props.data;
-    console.log(data)
     if(data.floor == undefined)data.floor = 0;
     return (
         <div>
@@ -13,7 +12,7 @@ function ReplyTopBar(props) {
                 {data.author} 
             </span>
             <span className="text-secondary m-1">
-                {data.replytime}
+                {data.replyTime}
             </span>
             <span>
 

@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ReplyRepository extends MongoRepository<Reply, Integer> {
@@ -16,4 +17,7 @@ public interface ReplyRepository extends MongoRepository<Reply, Integer> {
 
     @Query(value="{ 'topicId':  ?0  }",sort="{'floor': -1}}")
     List<Reply> findByTopicIdLikeDesc(int topicId);
+
+    @Query(value="{ 'topicId':  ?0 , 'floor': ?1 }")
+    Optional<Reply> findByTopicIdAndFloorLike(int topicId, int floor);
 }

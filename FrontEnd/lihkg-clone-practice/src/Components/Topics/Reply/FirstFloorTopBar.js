@@ -12,7 +12,7 @@ function FirstFloorTopBar(props) {
                 {data.author} 
             </span>
             <span className="text-secondary m-1">
-                {data.replytime}
+                {data.createTime}
             </span>
             <span>
 
