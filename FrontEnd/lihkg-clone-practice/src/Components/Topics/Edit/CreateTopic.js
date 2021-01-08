@@ -3,6 +3,7 @@ import { useState,useEffect,useContext } from 'react';
 
 import CreateTopicBar from './CreateTopicBar'
 import {UserContext} from '../../Account/User/UserContext'
+import CreateTopicCategory from './CreateTopicCategory'
 
 function CreateTopic(props) {
 
@@ -44,8 +45,7 @@ function CreateTopic(props) {
             </div>
             <div className="formgroup row ml-5 pl-5 mt-5">
                 <select name="category" id="category">
-                    <option value="1">吹水台</option>
-                    <option value="2">創意台</option>
+                    {CreateTopicCategory()}
                 </select>
                 <input type="text" class="form-control col-9 ml-2" id="title" name="title" aria-describedby="Title" aria-label="標題" placeholder="標題"></input>
             </div>

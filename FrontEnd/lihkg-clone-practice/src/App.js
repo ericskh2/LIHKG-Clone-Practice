@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState,useMemo } from 'react'
+import { useState,useMemo, useEffect } from 'react'
 import { Helmet } from 'react-helmet'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { useParams } from "react-router-dom";
@@ -45,8 +45,8 @@ function RenderTopicListByCategory(props){
 }
 function App() {
 
-	const [userData,setUserData] = useState({'loggedIn':false});
-	const providerValue = useMemo(()=>({userData,setUserData}),[userData,setUserData])
+	const [userData,setUserData] = useState({'loggedIn':false})
+	
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	function setMenuOpen() {
@@ -58,7 +58,7 @@ function App() {
 	return (
 
 		<div>
-			<UserContext.Provider value={providerValue}>
+			<UserContext.Provider value={{userData,setUserData}}>
 			<Router>
 				<Container>
 					<div className="row no-gutters">
