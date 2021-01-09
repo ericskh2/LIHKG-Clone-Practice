@@ -1,6 +1,7 @@
 package com.ericskh02.lihkgclone.controller;
 
 import com.ericskh02.lihkgclone.data.Like;
+import com.ericskh02.lihkgclone.data.Reply;
 import com.ericskh02.lihkgclone.service.LikeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -30,11 +31,18 @@ public class LikeController {
         return ResponseEntity.ok().body(obj);
     }
 
-    @PostMapping("/liketopic/{topicId}")
-    public ResponseEntity likeTopic(@PathVariable("topicId") String topicId){
-        Like like = new Like("AUTHOR", Integer.parseInt(topicId), 0, true, true);
-
+    @PostMapping("/liketopic")
+    public ResponseEntity likeTopic(@RequestBody Like like){
         if(likeService.likeTopic(like)){
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/disliketopic")
+    public ResponseEntity dislikeTopic(@RequestBody Like like){
+        if(likeService.dislikeTopic(like)){
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
@@ -50,5 +58,10 @@ public class LikeController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/getisliked/{topicId}/{user}")
+    public ResponseEntity<Boolean> getIsLiked(@PathVariable("topicId") String topicId, @PathVariable("user") String user){
+        return ResponseEntity.ok().body(likeService.getIsUserLiked(user,Integer.parseInt(topicId)));
     }
 }

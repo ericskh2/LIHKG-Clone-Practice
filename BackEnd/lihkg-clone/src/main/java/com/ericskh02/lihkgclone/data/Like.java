@@ -1,5 +1,6 @@
 package com.ericskh02.lihkgclone.data;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
@@ -16,9 +17,15 @@ public class Like {
 
     private int floor;
 
+    @JsonProperty("isLikeTopic") // Fix bug with boolean variable name starts with is
     private boolean isLikeTopic;
 
+    @JsonProperty("isLike") // Fix bug with boolean variable name starts with is
     private boolean isLike;
+
+    public Like(){
+
+    }
 
     public Like(String author, int topicId, int floor, boolean isLikeTopic, boolean isLike) {
         this.author = author;

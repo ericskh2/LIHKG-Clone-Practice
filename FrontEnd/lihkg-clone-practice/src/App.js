@@ -11,6 +11,7 @@ import Topic from './Components/Topics/Topic'
 import CategoryList from './Components/Topics/CategoryList/CategoryList';
 import CategoryData from "./Components/Topics/CategoryList/CategoryData";
 import {UserContext} from './Components/Account/User/UserContext'
+import API from './API/API'
 function RenderHome() {
 	return (
 		<div>
@@ -59,6 +60,7 @@ function App() {
 
 		<div>
 			<UserContext.Provider value={{userData,setUserData}}>
+			<API />
 			<Router>
 				<Container>
 					<div className="row no-gutters">

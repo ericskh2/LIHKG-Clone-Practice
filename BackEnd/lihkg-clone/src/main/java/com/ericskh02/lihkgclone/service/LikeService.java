@@ -18,6 +18,14 @@ public class LikeService {
 
     public boolean likeTopic(Like like){
         if(!topicService.hasTopic(like.getTopicId())) return false;
+        if(this.getIsUserLikedOrDisliked(like.getAuthor(),like.getTopicId())) return false;
+        likeRepository.insert(like);
+        return true;
+    }
+
+    public boolean dislikeTopic(Like like){
+        if(!topicService.hasTopic(like.getTopicId())) return false;
+        if(this.getIsUserLikedOrDisliked(like.getAuthor(),like.getTopicId())) return false;
         likeRepository.insert(like);
         return true;
     }
@@ -42,5 +50,17 @@ public class LikeService {
 
     public int getReplyDislike(int topicId, int floor){
         return likeRepository.countReplyDislikeByTopicIdAndFloor(topicId,floor);
+    }
+
+    public boolean getIsUserLiked(String user, int topicId) {
+        return (likeRepository.getIsUserLikedByTopicId(user,topicId) >= 1);
+    }
+
+    public boolean getIsUserDisliked(String user, int topicId){
+        return (likeRepository.getIsUserDislikedByTopicId(user,topicId) >= 1);
+    }
+
+    public boolean getIsUserLikedOrDisliked(String user, int topicId){
+        return this.getIsUserLiked(user,topicId) || this.getIsUserDisliked(user,topicId);
     }
 }

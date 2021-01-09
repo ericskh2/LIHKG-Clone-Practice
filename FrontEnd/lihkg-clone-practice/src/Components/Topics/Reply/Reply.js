@@ -4,6 +4,7 @@ import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
 import ReplyTopBar from './ReplyTopBar'
 import Wall from '../Wall'
+import Like from '../Like'
 
 /*
 const data = {
@@ -16,8 +17,8 @@ const data = {
 };
 */
 
-function Reply(data) {
-    data = data.data;
+function Reply(props) {
+    const data = props.data;
     return (
         <div className="m-5">
                 <div className="row">
@@ -27,12 +28,7 @@ function Reply(data) {
                     <p><h1>{data.content}</h1></p>
                 </div>
                 <div className="row">
-                    <div className="text-secondary bg-light">
-                        <span className="m-1"><FontAwesomeIcon icon={faThumbsUp} /></span>
-                        <span className="m-1">{data.like}</span>
-                        <span className="m-1"><FontAwesomeIcon icon={faThumbsDown} /></span>
-                        <span className="m-1">{data.dislike}</span>
-                    </div>
+                    <Like data={data}/>
                 </div>
                 <Wall />
         </div>

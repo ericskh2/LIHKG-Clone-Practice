@@ -17,4 +17,10 @@ public interface LikeRepository extends MongoRepository<Like, Integer> {
     public int countReplyLikeByTopicIdAndFloor(int topicId, int floor);
     @Query(value="{ 'topicId':  ?0 , 'isLikeTopic':true, 'floor': ?1 , 'isLike': false }",count = true)
     public int countReplyDislikeByTopicIdAndFloor(int topicId, int floor);
+
+    @Query(value="{'topicId': ?1, 'author': ?0 , 'isLikeTopic' : true, 'isLike': true}",count = true)
+    public int getIsUserLikedByTopicId(String user, int topicId);
+
+    @Query(value="{'topicId': ?1, 'author': ?0 , 'isLikeTopic' : true, 'isLike': false}",count = true)
+    public int getIsUserDislikedByTopicId(String user, int topicId);
 }

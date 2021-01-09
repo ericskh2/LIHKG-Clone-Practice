@@ -12,6 +12,7 @@ function UserInfo(){
         </div>);
     } else 
     return (
+        
         <div className="row text-center">
             <div className="col-12">
                 <img className="rounded-circle" src={userData.imgURL}></img>

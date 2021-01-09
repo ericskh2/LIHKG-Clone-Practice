@@ -1,8 +1,6 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
-
 import FirstFloorTopBar from './Reply/FirstFloorTopBar'
 import Wall from './Wall'
+import Like from './Like'
 
 function Content(props){
     const data = props.content; 
@@ -15,12 +13,7 @@ function Content(props){
                         <p><h1>{data.content}</h1></p>
                     </div>
                     <div className="row">
-                        <div className="text-secondary bg-light">
-                            <span className="m-1"><FontAwesomeIcon icon={faThumbsUp} /></span>
-                            <span className="m-1">{data.like}</span>
-                            <span className="m-1"><FontAwesomeIcon icon={faThumbsDown} /></span>
-                            <span className="m-1">{data.dislike}</span>
-                        </div>
+                        <Like data={data} />
                     </div>
                     <Wall />
             </div>
