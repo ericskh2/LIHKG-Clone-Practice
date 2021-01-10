@@ -32,7 +32,7 @@ function TopicList(props) {
         let generated = [];
         const topics = await getTopicsFromAPI();
         topics.data.topicList.forEach(topic => {
-            generated.push(<TopicList_Topic topics={topic} />);
+            generated.push(<TopicList_Topic key={topic.id} topics={topic} />);
         });
         return generated;
     }

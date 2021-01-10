@@ -15,7 +15,7 @@ public interface LikeRepository extends MongoRepository<Like, Integer> {
 
     @Query(value="{ 'topicId':  ?0 , 'isLikeTopic' : false , 'floor': ?1 ,'isLike': true}",count = true)
     public int countReplyLikeByTopicIdAndFloor(int topicId, int floor);
-    @Query(value="{ 'topicId':  ?0 , 'isLikeTopic':true, 'floor': ?1 , 'isLike': false }",count = true)
+    @Query(value="{ 'topicId':  ?0 , 'isLikeTopic': false , 'floor': ?1 , 'isLike': false }",count = true)
     public int countReplyDislikeByTopicIdAndFloor(int topicId, int floor);
 
     @Query(value="{'topicId': ?1, 'author': ?0 , 'isLikeTopic' : true, 'isLike': true}",count = true)
@@ -23,4 +23,10 @@ public interface LikeRepository extends MongoRepository<Like, Integer> {
 
     @Query(value="{'topicId': ?1, 'author': ?0 , 'isLikeTopic' : true, 'isLike': false}",count = true)
     public int getIsUserDislikedByTopicId(String user, int topicId);
+
+    @Query(value="{'topicId': ?1, 'floor': ?2 ,'author': ?0 , 'isLikeTopic' : false, 'isLike': true}",count = true)
+    public int getIsUserLikedByTopicIdAndFloor(String user, int topicId, int floor);
+
+    @Query(value="{'topicId': ?1, 'floor': ?2 ,'author': ?0 , 'isLikeTopic' : false, 'isLike': false}",count = true)
+    public int getIsUserDislikedByTopicIdAndFloor(String user, int topicId, int floor);
 }

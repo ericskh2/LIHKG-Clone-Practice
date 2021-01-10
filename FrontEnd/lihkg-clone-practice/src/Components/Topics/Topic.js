@@ -1,6 +1,6 @@
 import { useEffect,useState } from 'react';
 
-import {APIGetTopic,APIGetReply} from '../../API/API'
+import {APIGetTopic,APIGetReply, APIGetReplyLikeCountList} from '../../API/API'
 
 
 import TopicTopBar from './TopicTopBar'
@@ -14,13 +14,12 @@ function Topic(props) {
     const [TopicData,setTopicData] = useState(<div></div>);
     const [ReplyData,setReplyData] = useState(<div></div>);
 
-    function genReplyData(data){
+    function genReplyData(data,likedata){
         let generated = [];
         data = data.replyList;
         data.forEach(element => {
-            console.log(element)
             generated.push(
-                <Reply data={element}/>
+                <Reply key={element.floor} data={element} likedata={likedata[element.floor]}/>
             )
         });
         return generated;
@@ -45,14 +44,24 @@ function Topic(props) {
             </div>
         ));
         const ReplyData = await getReplyData();
-        console.log(ReplyData);
-        setReplyData(genReplyData(ReplyData));
+        const LikeData = await getReplyLikeData();
+        setReplyData(genReplyData(ReplyData,LikeData));
     },[])
 
     async function getReplyData(){
         const Response = await APIGetReply(id)
         .then(
-            res=> {return res}
+            res=>res
+        ).catch(err=>
+            console.log(err)
+        );
+        return Response.data;
+    }
+
+    async function getReplyLikeData(){
+        const Response = await APIGetReplyLikeCountList(id)
+        .then(
+            res=>res
         ).catch(err=>
             console.log(err)
         );

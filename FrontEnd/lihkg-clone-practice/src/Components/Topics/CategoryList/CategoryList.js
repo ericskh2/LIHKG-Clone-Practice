@@ -10,7 +10,7 @@ function CategoryList(props) {
         let gen = [];
         let categories = CategoryData();
         for (var key in categories) {
-            gen.push(<Category catnum={key} category={categories[key]} />);
+            gen.push(<Category key={key} catnum={key} category={categories[key]} />);
         }
         return gen;
     }

@@ -1,7 +1,6 @@
 package com.ericskh02.lihkgclone.controller;
 
 import com.ericskh02.lihkgclone.data.Like;
-import com.ericskh02.lihkgclone.data.Reply;
 import com.ericskh02.lihkgclone.service.LikeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -49,11 +48,18 @@ public class LikeController {
         }
     }
 
-    @PostMapping("/likereply/{topicId}/{floor}")
-    public ResponseEntity likeReply(@PathVariable("topicId") String topicId, @PathVariable("floor") String floor){
-        Like like = new Like("AUTHOR", Integer.parseInt(topicId), Integer.parseInt(floor), false, true);
-
+    @PostMapping("/likereply")
+    public ResponseEntity likeReply(@RequestBody Like like){
         if(likeService.likeReply(like)){
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/dislikereply")
+    public ResponseEntity dislikeReply(@RequestBody Like like){
+        if(likeService.dislikeReply(like)){
             return ResponseEntity.ok().build();
         } else {
             return ResponseEntity.notFound().build();
@@ -62,6 +68,11 @@ public class LikeController {
 
     @GetMapping("/getisliked/{topicId}/{user}")
     public ResponseEntity<Boolean> getIsLiked(@PathVariable("topicId") String topicId, @PathVariable("user") String user){
-        return ResponseEntity.ok().body(likeService.getIsUserLiked(user,Integer.parseInt(topicId)));
+        return ResponseEntity.ok().body(likeService.getIsUserLikedTopic(user,Integer.parseInt(topicId)));
+    }
+
+    @GetMapping("/getreplylikecountlist/{topicId}")
+    public ResponseEntity<JSONObject> getReplyLikeCountList(@PathVariable("topicId") String topicId){
+        return ResponseEntity.ok().body(likeService.getReplyLikeCountListByTopic(Integer.parseInt(topicId)));
     }
 }

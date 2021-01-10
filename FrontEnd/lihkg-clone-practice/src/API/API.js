@@ -39,11 +39,15 @@ export const APICreateReply = data => Request.post('/reply/create', data, {
 })
 */
 
+export const APIGetTopicLikeCount = (data) => Request.get('/gettopiclike/'+data);
+
+export const APIGetReplyLikeCountList = (data) => Request.get('/getreplylikecountlist/'+data);
+
 export const APILikeTopic = async (data) => {
     let temp = {
         'author': userData.email,
         'topicId': data.id,
-        floor: 0,
+        'floor': 0,
         'isLike': true,
         'isLikeTopic': true
     }
@@ -60,7 +64,7 @@ export const APIDislikeTopic = async (data) => {
     let temp = {
         'author': userData.email,
         'topicId': data.id,
-        floor: 0,
+        'floor' : 0,
         'isLike': false,
         'isLikeTopic': true
     }
@@ -73,8 +77,40 @@ export const APIDislikeTopic = async (data) => {
     return ret;
 }
 
+export const APILikeReply = async (data) => {
+    let temp = {
+        'author': userData.email,
+        'topicId': data.topicId,
+        'floor' : data.floor,
+        'isLike': true,
+        'isLikeTopic': false
+    }
+    let ret = false;
+    const req = await Request.post('/likereply', temp, {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).then((res)=>ret=true).catch((err)=>ret=false);
+    return ret;
+}
 
-export const APIGetTopicLikeCount = (data) => Request.get('/gettopiclike/'+data);
+export const APIDislikeReply = async (data) => {
+    let temp = {
+        'author': userData.email,
+        'topicId': data.topicId,
+        'floor' : data.floor,
+        'isLike': false,
+        'isLikeTopic': false
+    }
+    let ret = false;
+    const req = await Request.post('/dislikereply', temp, {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).then((res)=>ret=true).catch((err)=>ret=false);
+    return ret;
+}
+
 
 //Broken because userData is slower than the function
 /*export const APIGetIsLiked = (data) => {

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 
-import {APILikeTopic,APIDislikeTopic,APIGetTopicLikeCount} from '../../API/API'
+import {APILikeTopic,APIDislikeTopic,APIGetTopicLikeCount,APILikeReply,APIDislikeReply} from '../../API/API'
 import {UserContext} from '../Account/User/UserContext'
 
 function Like(props) {
@@ -12,8 +12,8 @@ function Like(props) {
 
     const [liked, setLiked] = useState(false);
     const [disliked, setDisliked] = useState(false);
-    const [likeCount,setLikeCount] = useState(0);
-    const [dislikeCount,setDislikeCount] = useState(0);
+    const [likeCount,setLikeCount] = useState(props.likedata.like);
+    const [dislikeCount,setDislikeCount] = useState(props.likedata.dislike);
 
     let likebutton = <button className="btn btn-light" onClick={likeButton}><FontAwesomeIcon icon={faThumbsUp} /></button>;
     let dislikebutton = <button className="btn btn-light" onClick={dislikeButton}><FontAwesomeIcon icon={faThumbsDown} /></button>;
@@ -39,11 +39,13 @@ function Like(props) {
 
     useEffect(() => {
         if (liked) {
+            setLikeCount(likeCount+1);
             likebutton = <button className="btn btn-light active" onClick={likeButton}><FontAwesomeIcon icon={faThumbsUp} /></button>;
         } else {
             likebutton = <button className="btn btn-light" onClick={dislikeButton}><FontAwesomeIcon icon={faThumbsUp} /></button>;
         }
         if (disliked) {
+            setDislikeCount(dislikeCount+1);
             dislikebutton = <button className="btn btn-light active" onClick={likeButton}><FontAwesomeIcon icon={faThumbsDown} /></button>
         } else {
             dislikebutton = <button className="btn btn-light" onClick={dislikeButton}><FontAwesomeIcon icon={faThumbsDown} /></button>
@@ -54,24 +56,23 @@ function Like(props) {
         if(!userData.loggedIn){
             alert("未登入");
         } else if (typeof data.category === "undefined") { // use to check if it is topic or reply
-            console.log("test");
+            const res = await APILikeReply(data);
+            (res)?setLiked(true):alert("已Like過/已Dislike過");
         } else {
             const res = await APILikeTopic(data);
-            console.log(res);
-            (res)?console.log("test"):alert("已Like過/已Dislike過");
+            (res)?setLiked(true):alert("已Like過/已Dislike過");
         }
-
     }
 
     async function dislikeButton() {
         if(!userData.loggedIn){
             alert("未登入")
         } else if (typeof data.category === "undefined") { // use to check if it is topic or reply
-            console.log("test dis")
+            const res = await APIDislikeReply(data);
+            (res)?setDisliked(true):alert("已Like過/已Dislike過");
         } else {
             const res = await APIDislikeTopic(data);
-            console.log(res);
-            (res)?console.log("test dis"):alert("已Like過/已Dislike過");
+            (res)?setDisliked(true):alert("已Like過/已Dislike過");
         }
     }
 

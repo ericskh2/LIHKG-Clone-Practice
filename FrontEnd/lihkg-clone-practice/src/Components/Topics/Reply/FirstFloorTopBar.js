@@ -2,7 +2,6 @@ import { useContext } from "react";
 
 function FirstFloorTopBar(props) {
     const data = props.data;
-    console.log(data)
     return (
         <div>
             <span className="text-secondary m-1">

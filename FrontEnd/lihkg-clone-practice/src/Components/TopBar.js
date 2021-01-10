@@ -25,7 +25,7 @@ function TopBar(props) {
             <div className="row border-bottom border-grey">
                 <div className="col-3">
                     <button className="navbar-toggler" onClick={props.setMenuOpen}>
-                        <span class="navbar-toggler-icon"><img src={favicon} alt="navbutton" className="img-fluid"></img></span>
+                        <span className="navbar-toggler-icon"><img src={favicon} alt="navbutton" className="img-fluid"></img></span>
                     </button>
                 </div>
                 <div className="col-5 ">
@@ -35,7 +35,7 @@ function TopBar(props) {
 
                 </div>
                 <div className="col-4">
-                    <div class="btn-group" role="group" aria-label="Basic example">
+                    <div className="btn-group" role="group" aria-label="Basic example">
                         <button type="button" className="btn btn-light d-inline" onClick={()=>window.location.reload()}>
                             <FontAwesomeIcon icon={faSyncAlt} />
                         </button>

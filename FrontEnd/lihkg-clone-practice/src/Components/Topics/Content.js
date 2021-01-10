@@ -10,10 +10,10 @@ function Content(props){
                         <FirstFloorTopBar data={data} />
                     </div>
                     <div className="row">
-                        <p><h1>{data.content}</h1></p>
+                        <h1>{data.content}</h1>
                     </div>
                     <div className="row">
-                        <Like data={data} />
+                        <Like data={data} likedata={{'like':0,'dislike':0}}/>
                     </div>
                     <Wall />
             </div>
