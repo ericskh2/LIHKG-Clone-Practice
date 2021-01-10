@@ -7,32 +7,29 @@ import CreateTopicCategory from './CreateTopicCategory'
 
 function CreateTopic(props) {
 
-    const [showCreateTopic,setShowCreateTopic] = useState(false);
+    const {showCreateTopic,setShowCreateTopic} = props.setShow;
 
     const {userData,setUserData} = useContext(UserContext);
+
+    function setShow(){
+        setShowCreateTopic(!showCreateTopic);
+    }
 
     function handleSubmit(event) {
         event.preventDefault();
         if(userData.loggedIn){
-            
             const data = new FormData(event.target);
             var object = {};
             data.forEach((value, key) => object[key] = value);
             object['author'] = userData.name;
             console.log(object);
             APICreateTopic(object);
-
+            window.location.reload();
         } else {
             alert("未登入!")
         }
         setShowCreateTopic(false);
     }
-
-    useEffect(
-        ()=>{
-            setShowCreateTopic(props.show);
-        },[]
-    );
 
     let html = <div></div>;
     if(showCreateTopic){
@@ -41,7 +38,7 @@ function CreateTopic(props) {
         <form onSubmit={handleSubmit}>
             <div className="formgroup text-center mt-5">
                 <span className="h4">發表主題</span>
-                <button type="button" className="float-right mr-3">X</button>
+                <button type="button" className="float-right mr-3" onClick={setShow}>X</button>
             </div>
             <div className="formgroup row ml-5 pl-5 mt-5">
                 <select name="category" id="category">

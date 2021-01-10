@@ -51,13 +51,12 @@ export const APILikeTopic = async (data) => {
         'isLike': true,
         'isLikeTopic': true
     }
-    let ret = false;
     const req = await Request.post('/liketopic', temp, {
         headers: {
             'Content-Type': 'application/json',
         }
-    }).then((res)=>ret=true).catch((err)=>ret=false);
-    return ret;
+    }).then((res)=>true).catch((err)=>false);
+    return req;
 }
 
 export const APIDislikeTopic = async (data) => {
@@ -68,13 +67,12 @@ export const APIDislikeTopic = async (data) => {
         'isLike': false,
         'isLikeTopic': true
     }
-    let ret = false;
     const req = await Request.post('/disliketopic', temp, {
         headers: {
             'Content-Type': 'application/json',
         }
-    }).then((res)=>ret=true).catch((err)=>ret=false);
-    return ret;
+    }).then((res)=>true).catch((err)=>false);
+    return req;
 }
 
 export const APILikeReply = async (data) => {
@@ -85,13 +83,12 @@ export const APILikeReply = async (data) => {
         'isLike': true,
         'isLikeTopic': false
     }
-    let ret = false;
     const req = await Request.post('/likereply', temp, {
         headers: {
             'Content-Type': 'application/json',
         }
-    }).then((res)=>ret=true).catch((err)=>ret=false);
-    return ret;
+    }).then((res)=>true).catch((err)=>false);
+    return req;
 }
 
 export const APIDislikeReply = async (data) => {
@@ -102,13 +99,12 @@ export const APIDislikeReply = async (data) => {
         'isLike': false,
         'isLikeTopic': false
     }
-    let ret = false;
     const req = await Request.post('/dislikereply', temp, {
         headers: {
             'Content-Type': 'application/json',
         }
-    }).then((res)=>ret=true).catch((err)=>ret=false);
-    return ret;
+    }).then((res)=>true).catch((err)=>false);
+    return req;
 }
 
 

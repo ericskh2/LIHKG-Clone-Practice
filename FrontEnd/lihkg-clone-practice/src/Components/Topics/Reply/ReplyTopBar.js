@@ -12,7 +12,7 @@ function ReplyTopBar(props) {
                 {data.author} 
             </span>
             <span className="text-secondary m-1">
-                {data.replyTime}
+                {data.replyTime.substring(0,10)+' '+data.replyTime.substring(11,19)}
             </span>
             <span>
 

@@ -6,7 +6,7 @@ import {UserContext} from '../../Account/User/UserContext'
 function CreateReply(props) {
 
     const {userData,setUserData} = useContext(UserContext);
-    const [showCreateReply, setShowCreateReply] = useState(false);
+    const {showCreateReply,setShowCreateReply} = props.setShow;
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -18,7 +18,7 @@ function CreateReply(props) {
             object['topicId'] = props.topicId;
             APICreateReply(object);
             console.log(object)
-            
+            window.location.reload();
         } else {
             alert("未登入!")
         }
@@ -27,19 +27,13 @@ function CreateReply(props) {
 
     var html = <div></div>
 
-    useEffect(
-        () => {
-            setShowCreateReply(props.show);
-        }, []
-    );
-
     if (showCreateReply) {
         html =
             <div className="createtopic">
                 <form onSubmit={handleSubmit}>
                     <div className="formgroup text-center mt-5">
                         <span className="h4">回覆</span>
-                        <button type="button" className="float-right mr-3">X</button>
+                        <button type="button" className="float-right mr-3" onClick={()=>setShowCreateReply(false)}>X</button>
                     </div>
                     <div className="formgroup text-center mt-5">
                         <textarea id="content" name="content" rows="20" cols="100" className="bg-light">

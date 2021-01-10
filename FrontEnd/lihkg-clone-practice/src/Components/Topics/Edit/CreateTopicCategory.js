@@ -6,7 +6,6 @@ function CreateTopicCategory(){
     for(var key in categories){
         gen.push(<option value={key}>{categories[key]}</option>)
     };
-    console.log(gen);
     return gen;
 }
 

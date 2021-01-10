@@ -7,20 +7,15 @@ import CategoryData from "./Topics/CategoryList/CategoryData";
 
 import CreateTopic from './Topics/Edit/CreateTopic'
 function TopBar(props) {
-    const [createTopic,setCreateTopic] = useState(false);
+
+    const [showCreateTopic,setShowCreateTopic] = useState(false);
 
     const categories = CategoryData();
-
-    function RenderCreateTopic(){
-        if(createTopic){
-            return <CreateTopic show={true}/>
-        }
-    }
       
     return (
         <div className=" col-12">
 
-            {RenderCreateTopic()}
+            <CreateTopic setShow={{showCreateTopic,setShowCreateTopic}}/>
 
             <div className="row border-bottom border-grey">
                 <div className="col-3">
@@ -39,7 +34,7 @@ function TopBar(props) {
                         <button type="button" className="btn btn-light d-inline" onClick={()=>window.location.reload()}>
                             <FontAwesomeIcon icon={faSyncAlt} />
                         </button>
-                        <button type="button" className="btn btn-light d-inline" onClick={() => setCreateTopic(true)}>
+                        <button type="button" className="btn btn-light d-inline" onClick={() => setShowCreateTopic(true)}>
                             <FontAwesomeIcon icon={faPlus} />
                         </button>
                     </div>

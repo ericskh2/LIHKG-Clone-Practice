@@ -15,7 +15,7 @@ function UserInfo(){
         
         <div className="row text-center">
             <div className="col-12">
-                <img className="rounded-circle" src={userData.imgURL}></img>
+                <img className="rounded-circle" src={userData.imgURL} alt="Profile Thumbnail"></img>
             </div>
             <div className="col-12">
                 <p className="col-md-6 mx-auto">{userData.name}</p>

@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState,useMemo, useEffect } from 'react'
+import { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { useParams } from "react-router-dom";
@@ -9,7 +9,6 @@ import TopicList from './Components/TopicList'
 import Background from './Components/Background'
 import Topic from './Components/Topics/Topic'
 import CategoryList from './Components/Topics/CategoryList/CategoryList';
-import CategoryData from "./Components/Topics/CategoryList/CategoryData";
 import {UserContext} from './Components/Account/User/UserContext'
 import API from './API/API'
 function RenderHome() {
@@ -53,8 +52,6 @@ function App() {
 	function setMenuOpen() {
 		setIsMenuOpen(!isMenuOpen);
 	}
-
-	const categories = CategoryData();
 	
 	return (
 

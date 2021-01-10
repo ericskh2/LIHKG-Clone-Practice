@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 import favicon from '../Image/favicon.png'
 
 function Background(){

@@ -10,17 +10,11 @@ function TopicTopBar(props) {
 
     const [showCreateReply, setShowCreateReply] = useState(false);
 
-    function RenderCreateReply() {
-        if (showCreateReply) {
-            return (<CreateReply show="true" topicId={props.topic.id} />);
-        }
-    }
-
     return (
         <div className="row mt-2">
-            {RenderCreateReply()}
+            <CreateReply setShow={{showCreateReply,setShowCreateReply}} topicId={props.topic.id} />
             <div className="col-10">
-                <span className="ml-5 pt-2">{props.topic.title}</span>
+                <span className="ml-5 pt-2 h2">{props.topic.title}</span>
             </div>
             <div className="col-2">
                 <button className="btn" onClick={() => setShowCreateReply(true)}>

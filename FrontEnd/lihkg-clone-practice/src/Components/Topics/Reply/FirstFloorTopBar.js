@@ -11,7 +11,7 @@ function FirstFloorTopBar(props) {
                 {data.author} 
             </span>
             <span className="text-secondary m-1">
-                {data.createTime}
+                {data.createTime.substring(0,10)+' '+data.createTime.substring(11,19)}
             </span>
             <span>
 

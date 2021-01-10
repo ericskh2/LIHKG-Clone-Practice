@@ -21,9 +21,7 @@ function TopicList_Topic(props) {
 
                         <div className="pt-2 pb-1">
                             <span className="text-primary">{topics.author}</span>
-                            <span className="text-secondary pl-2 pr-2">{topics.createTime}</span>
-                            <span className="text-secondary">{thumbs()}</span>
-                            <span className="text-secondary pl-1">{topics.like}</span>
+                            <span className="text-secondary pl-2 pr-2">{topics.createTime.substring(0,10)+' '+topics.createTime.substring(11,19)}</span>
                         </div>
                         <div className="pt-1 pb-2">
                             <h5 className="">{topics.title}</h5>
