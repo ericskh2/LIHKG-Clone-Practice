@@ -1,8 +1,6 @@
 # LIHKG-Clone-Practice
 
 ## Introduction
-![Screenshot1](screenshot1.png)
-![Screenshot2](screenshot2.png)
 
 This is a side project made in Year1 Semester A break for practice
 
@@ -27,3 +25,7 @@ Frontend: React.js, React-Router-Dom, React-Google-Login, React-Helmet, Axios, B
 Backend: Spring boot, MongoDB, JSON-simple
 
 Other tools: Google developer console(for google authentication), Postman(for testing)
+
+## Sample Screenshots
+![Screenshot1](screenshot1.png)
+![Screenshot2](screenshot2.png)
